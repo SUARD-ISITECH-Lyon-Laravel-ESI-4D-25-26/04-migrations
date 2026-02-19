@@ -7,20 +7,21 @@ use Illuminate\Support\Facades\Schema;
 class AddSurnameToUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // TASK: Add a string field "surname" which would go after the field "name"
-            // Write code here
+            // TÂCHE : ajoutez un champ de type string nommé "surname" après le champ "name"
+            // Indice : utilisez l'option ->after() pour positionner la colonne (voir https://laravel.com/docs/migrations#column-order)
+            // Votre code ici
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

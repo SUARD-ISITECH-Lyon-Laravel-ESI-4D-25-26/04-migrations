@@ -1,121 +1,166 @@
-## Test Your Laravel Migrations Skills
+## Testez vos compétences Laravel — Migrations
 
-This repository is a test for you: perform a set of tasks listed below, and fix the PHPUnit tests, which are currently intentionally failing.
+Ce dépôt est un exercice pratique : réalisez les tâches listées ci-dessous
+et faites passer les tests PHPUnit, qui échouent volontairement pour le moment.
 
-To test if all the functions work correctly, there are PHPUnit tests in `tests/Feature/MigrationsTest.php` file.
+Pour vérifier votre progression, les tests se trouvent dans `tests/Feature/MigrationsTest.php`.
 
-In the very beginning, if you run `php artisan test`, or `vendor/bin/phpunit`, all tests fail.
-Your task is to make those tests pass.
+Au départ, si vous exécutez `php artisan test`, tous les tests échouent.
+Votre objectif est de les faire passer un par un.
 
-
-## IMPORTANT NOTICE - TESTING DATABASE IS MYSQL
-
-**TESTS ARE CONFIGURED TO RUN ON A LOCAL MYSQL DATABASE (NOT SQLITE) WHICH SHOULD BE CALLED "mysql_testing"**
-
-**DON'T FORGET TO CREATE THAT DATABASE**
-
-**ALSO, THAT DB WILL BE WIPED A LOT WITHIN TESTS BY "migrate:fresh"**
+> ⚠️ **Vous n'avez pas le droit de modifier les fichiers de tests.**
 
 
-## How to Submit Your Solution
+## Notice importante — Base de données MySQL
 
-If you want to submit your solution, you should make a Pull Request to the `main` branch.
-It will automatically run the tests via Github Actions and will show you/me if the test pass.
+**Les tests sont configurés pour s'exécuter sur une base de données MySQL locale
+nommée `mysql_testing`.**
 
-If you don't know how to make a Pull Request, [here's my video with instructions](https://www.youtube.com/watch?v=vEcT6JIFji0).
+**N'oubliez pas de créer cette base de données.**
 
-This task is mostly self-served, so I'm not planning review or merge the Pull Requests. This test is for yourselves to assess your skills, the automated tests will be your answer if you passed the test :)
+**Attention : cette base sera vidée fréquemment par les tests via `migrate:fresh`.**
 
 
-## Questions / Problems?
+## Installation du projet
 
-If you're struggling with some of the tasks, or you have suggestions how to improve the task, create a Github Issue.
+```sh
+git clone <url-du-depot> projet
+cd projet
+cp .env.example .env  # Éditez vos variables d'environnement
+composer install
+php artisan key:generate
+```
 
-Good luck!
+Puis lancez `php artisan test` pour voir les erreurs à corriger.
 
----
 
-## Task 1. Migrations with Foreign Key.
+## Soumettre votre solution
 
-Folder `database/migrations/task1` contains migrations for tasks with foreign key to users, and for comments with foreign key to users. 
-Both will fail, your task is to understand the reason and to fix the migrations to run successfully.
-
-Test method `test_successful_foreign_key_tasks_comments()`.
+Créez une Pull Request (ou Merge Request) vers la branche `main`.
 
 ---
 
-## Task 2. Add Column after Another Column.
+## Tâche 1. Migration avec clé étrangère (Foreign Key)
 
-Folder `database/migrations/task2` contains migrations for users table: one for creating the table, and another one for adding a NEW field.
-That new field "surname" should be added in a particular order - after the "name" field.
+Le dossier `database/migrations/task1` contient des migrations pour les tables `tasks` et `comments`,
+chacune avec une clé étrangère (foreign key) vers la table `users`.
+Ces migrations échouent actuellement : trouvez la raison et corrigez-les pour qu'elles s'exécutent correctement.
 
-Test method `test_column_added_to_the_table()`.
-
----
-
-## Task 3. Soft Deletes.
-
-Folder `database/migrations/task3` contains a migration for projects table. You need to add a field there, for Soft Delete functionality.
-
-Test method `test_soft_deletes()`.
+Méthode de test : `test_successful_foreign_key_tasks_comments()`.
 
 ---
 
-## Task 4. Auto-Delete Related Records
+## Tâche 2. Ajout d'une colonne après une autre colonne
 
-Folder `database/migrations/task4` contains migrations for category and products tables. You need to modify the products migration, so that deleting the category would auto-delete its products, instead of throwing an error.
+Le dossier `database/migrations/task2` contient des migrations pour la table `users` :
+l'une crée la table, l'autre ajoute un nouveau champ.
+Ce nouveau champ `surname` doit être ajouté dans un ordre précis — après le champ `name`.
 
-Test method `test_delete_parent_child_record()`.
+Modifiez le fichier `database/migrations/task2/2021_11_09_075928_add_surname_to_users_table.php`.
 
----
-
-## Task 5. Check if Table/Column Exists
-
-Folder `database/migrations/task5` contains migrations for users table. By mistake, some developer tries to add the column that already exists, and re-create the users table that already exists.
-
-You need to modify the migrations to ignore those operations if the column/table exists. So "php artisan migrate" should run successfully, without errors.
-
-Test method `test_repeating_column_table()`.
+Méthode de test : `test_column_added_to_the_table()`.
 
 ---
 
-## Task 6. Duplicate Column Value
+## Tâche 3. Suppression logique (Soft Deletes)
 
-Folder `database/migrations/task6` contains a migration for companies table. Edit that migration, so that it would be impossible to create multiple companies with the same name.
+Le dossier `database/migrations/task3` contient une migration pour la table `projects`.
+Ajoutez-y le champ nécessaire pour activer la fonctionnalité de suppression logique (soft deletes).
 
-Test method `test_duplicate_name()`.
+Modifiez le fichier `database/migrations/task3/2021_11_09_080955_create_projects_table.php`.
 
----
-
-## Task 7. Automatic Column Value
-
-Folder `database/migrations/task7` contains a migration for companies table. Edit that migration, so that if someone creates a company without the name, the automatic name would be "My company".
-
-Test method `test_automatic_value()`.
+Méthode de test : `test_soft_deletes()`.
 
 ---
 
-## Task 8. Rename table
+## Tâche 4. Suppression en cascade des enregistrements liés
 
-Folder `database/migrations/task8` contains a migration for company table. Later it was decided to rename the table from "company" to "companies". Write the code for that, in the second migration file.
+Le dossier `database/migrations/task4` contient des migrations pour les tables `categories` et `products`.
+Modifiez la migration de la table `products` pour que la suppression d'une catégorie supprime automatiquement
+ses produits, au lieu de lever une erreur.
 
-Test method `test_renamed_table()`.
+Modifiez le fichier `database/migrations/task4/2021_11_09_082205_create_products_table.php`.
 
----
-
-## Task 9. Rename column
-
-Folder `database/migrations/task9` contains a migration for companies table. Later it was decided to rename the column from "companies.title" to "companies.name". Write the code for that, in the second migration file.
-
-Test method `test_renamed_column()`.
+Méthode de test : `test_delete_parent_child_record()`.
 
 ---
 
-## Task 10. NULL on Foreign Key
+## Tâche 5. Vérifier l'existence d'une table ou d'une colonne
 
-Folder `database/migrations/task10` contains migrations for countries and visitors table. Visitor may have undetected country, so country_id may be NULL. Change the visitors table migration to allow that.
+Le dossier `database/migrations/task5` contient des migrations pour la table `users`.
+Par erreur, un développeur tente d'ajouter une colonne qui existe déjà, et de recréer une table déjà existante.
 
-Test method `test_null_foreign_key()`.
+Modifiez les migrations pour ignorer ces opérations si la colonne ou la table existe déjà,
+afin que `php artisan migrate` s'exécute sans erreur.
+
+Modifiez les fichiers `database/migrations/task5/2021_11_09_083121_update_users_table.php`
+et `database/migrations/task5/2021_11_09_083225_recreate_users_table.php`.
+
+Méthode de test : `test_repeating_column_table()`.
 
 ---
 
+## Tâche 6. Valeur de colonne unique (Duplicate)
+
+Le dossier `database/migrations/task6` contient une migration pour la table `companies`.
+Modifiez cette migration pour qu'il soit impossible de créer plusieurs entreprises avec le même nom.
+
+Modifiez le fichier `database/migrations/task6/2021_11_09_083843_create_companies_table.php`.
+
+Méthode de test : `test_duplicate_name()`.
+
+---
+
+## Tâche 7. Valeur de colonne automatique (Default)
+
+Le dossier `database/migrations/task7` contient une migration pour la table `companies`.
+Modifiez cette migration pour que si une entreprise est créée sans nom,
+la valeur automatique du champ `name` soit `"My company"`.
+
+Modifiez le fichier `database/migrations/task7/2021_11_09_084922_create_new_companies_table.php`.
+
+Méthode de test : `test_automatic_value()`.
+
+---
+
+## Tâche 8. Renommer une table
+
+Le dossier `database/migrations/task8` contient une migration pour la table `company`.
+Il a ensuite été décidé de renommer la table de `"company"` en `"companies"`.
+Écrivez le code correspondant dans le second fichier de migration.
+
+Modifiez le fichier `database/migrations/task8/2021_11_09_085453_rename_companies_table.php`.
+
+Méthode de test : `test_renamed_table()`.
+
+---
+
+## Tâche 9. Renommer une colonne
+
+Le dossier `database/migrations/task9` contient une migration pour la table `companies`.
+Il a ensuite été décidé de renommer la colonne de `companies.title` en `companies.name`.
+Écrivez le code correspondant dans le second fichier de migration.
+
+Modifiez le fichier `database/migrations/task9/2021_11_09_090018_rename_name_in_companies_table.php`.
+
+Méthode de test : `test_renamed_column()`.
+
+---
+
+## Tâche 10. Clé étrangère nullable (NULL on Foreign Key)
+
+Le dossier `database/migrations/task10` contient des migrations pour les tables `countries` et `visitors`.
+Un visiteur peut avoir un pays non détecté, donc `country_id` peut être `NULL`.
+Modifiez la migration de la table `visitors` pour autoriser cette valeur.
+
+Modifiez le fichier `database/migrations/task10/2021_11_09_090858_create_visitors_table.php`.
+
+Méthode de test : `test_null_foreign_key()`.
+
+---
+
+## Questions / Problèmes ?
+
+Si vous rencontrez des difficultés ou avez des suggestions, créez une Issue.
+
+Bon courage !

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateCommentsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class CreateCommentsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

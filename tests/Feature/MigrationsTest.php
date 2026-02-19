@@ -15,15 +15,15 @@ use Tests\TestCase;
 
 class MigrationsTest extends TestCase
 {
-    // !!! IMPORTANT: TESTS ARE CONFIGURED TO RUN ON A LOCAL MYSQL DATABASE
-    //     WHICH SHOULD BE CALLED "mysql_testing"
-    // !!! DON'T FORGET TO CREATE THAT DATABASE
+    // ⚠️ IMPORTANT : les tests sont configurés pour s'exécuter sur une base de données MySQL locale
+    //     qui doit s'appeler "mysql_testing"
+    // ⚠️ N'oubliez pas de créer cette base de données
 
-    // !!! NOTICE: THAT DB WILL BE WIPED A LOT WITHIN TESTS BY "migrate:fresh"
+    // ⚠️ REMARQUE : cette base sera vidée fréquemment par les tests via "migrate:fresh"
 
     public function test_successful_foreign_key_tasks_comments()
     {
-        // We just test if the migration succeeds or throws an exception
+        // Nous vérifions simplement que la migration s'exécute sans lever d'exception
         $this->expectNotToPerformAssertions();
 
         Artisan::call('migrate:fresh', ['--path' => '/database/migrations/task1']);
@@ -48,7 +48,7 @@ class MigrationsTest extends TestCase
 
     public function test_soft_deletes()
     {
-        // We just test if the test succeeds or throws an exception
+        // Nous vérifions simplement que le test s'exécute sans lever d'exception
         $this->expectNotToPerformAssertions();
 
         Artisan::call('migrate:fresh', ['--path' => '/database/migrations/task3']);
@@ -59,7 +59,7 @@ class MigrationsTest extends TestCase
 
     public function test_delete_parent_child_record()
     {
-        // We just test if the test succeeds or throws an exception
+        // Nous vérifions simplement que le test s'exécute sans lever d'exception
         $this->expectNotToPerformAssertions();
 
         Artisan::call('migrate:fresh', ['--path' => '/database/migrations/task4']);
@@ -71,7 +71,7 @@ class MigrationsTest extends TestCase
 
     public function test_repeating_column_table()
     {
-        // We just test if the migration succeeds or throws an exception
+        // Nous vérifions simplement que la migration s'exécute sans lever d'exception
         $this->expectNotToPerformAssertions();
 
         Artisan::call('migrate:fresh', ['--path' => '/database/migrations/task5']);
@@ -79,7 +79,7 @@ class MigrationsTest extends TestCase
 
     public function test_duplicate_name()
     {
-        // We expect that the second Company::create() would throw an exception like
+        // Nous attendons que le second Company::create() lève une exception du type
         // "Integrity constraint violation: 1062 Duplicate entry 'Company One'"
         $this->expectException(QueryException::class);
 

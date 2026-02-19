@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 class CreateProductsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
-        // TASK: Edit this file, so that deleting category would auto-delete its products
+        // TÂCHE : modifiez ce fichier pour que la suppression d'une catégorie supprime automatiquement ses produits (cascade)
+        // Indice : utilisez ->cascadeOnDelete() sur la clé étrangère (foreign key) (voir https://laravel.com/docs/migrations#foreign-key-constraints)
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained();
@@ -23,7 +24,7 @@ class CreateProductsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

@@ -7,14 +7,15 @@ use Illuminate\Support\Facades\Schema;
 class CreateNewCompaniesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
-        // TASK: edit this migration so that if company is created without the name
-        // its automatic value of name would be "My company"
+        // TÂCHE : modifiez cette migration pour que si une entreprise est créée sans nom,
+        // la valeur automatique du champ name soit "My company"
+        // Indice : utilisez ->default('My company') sur la colonne (voir https://laravel.com/docs/migrations#column-method-default)
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -23,7 +24,7 @@ class CreateNewCompaniesTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

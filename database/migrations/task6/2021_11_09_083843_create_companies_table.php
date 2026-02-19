@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 class CreateCompaniesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
-        // TASK: edit this migration so there couldn't be two companies with the same name
+        // TÂCHE : modifiez cette migration pour qu'il soit impossible de créer deux entreprises avec le même nom
+        // Indice : utilisez ->unique() sur la colonne (voir https://laravel.com/docs/migrations#column-method-unique)
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -22,7 +23,7 @@ class CreateCompaniesTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

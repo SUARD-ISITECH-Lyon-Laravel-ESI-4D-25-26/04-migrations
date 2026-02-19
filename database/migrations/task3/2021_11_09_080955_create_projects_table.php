@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateProjectsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
@@ -18,12 +18,13 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->timestamps();
 
-            // TASK: Add soft deletes column here
+            // TÂCHE : ajoutez ici la colonne pour la suppression logique (soft deletes)
+            // Indice : utilisez la méthode ->softDeletes() (voir https://laravel.com/docs/migrations#column-method-softDeletes)
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

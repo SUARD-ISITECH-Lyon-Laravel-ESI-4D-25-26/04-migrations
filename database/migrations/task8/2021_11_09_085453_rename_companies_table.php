@@ -7,17 +7,19 @@ use Illuminate\Support\Facades\Schema;
 class RenameCompaniesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
-        // TASK: add a migration to rename table "company" into "companies"
+        // TÂCHE : écrivez la migration pour renommer la table "company" en "companies"
+        // Indice : utilisez Schema::rename() (voir https://laravel.com/docs/migrations#renaming-and-dropping-tables)
+        // Votre code ici
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

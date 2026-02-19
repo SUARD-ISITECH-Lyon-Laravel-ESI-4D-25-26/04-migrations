@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateAnotherCompaniesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
@@ -21,7 +21,7 @@ class CreateAnotherCompaniesTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

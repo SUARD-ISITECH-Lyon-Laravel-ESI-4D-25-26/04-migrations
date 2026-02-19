@@ -7,20 +7,21 @@ use Illuminate\Support\Facades\Schema;
 class RenameNameInCompaniesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
-        // TASK: write the migration to rename the column "title" into "name"
+        // TÂCHE : écrivez la migration pour renommer la colonne "title" en "name"
+        // Indice : utilisez $table->renameColumn() (voir https://laravel.com/docs/migrations#renaming-columns)
         Schema::table('companies', function (Blueprint $table) {
-            // Write code here
+            // Votre code ici
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

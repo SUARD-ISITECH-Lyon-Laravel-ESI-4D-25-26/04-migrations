@@ -7,20 +7,21 @@ use Illuminate\Support\Facades\Schema;
 class UpdateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
-        // TASK: add an if-statement in this file to NOT add column if it already exists
+        // TÂCHE : ajoutez une condition dans ce fichier pour ne PAS ajouter la colonne si elle existe déjà
+        // Indice : utilisez Schema::hasColumn() (voir https://laravel.com/docs/migrations#checking-for-table-column-existence)
         Schema::table('users', function (Blueprint $table) {
             $table->string('name');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

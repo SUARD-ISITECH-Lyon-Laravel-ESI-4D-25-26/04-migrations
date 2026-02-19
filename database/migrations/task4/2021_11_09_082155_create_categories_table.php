@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateCategoriesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
@@ -21,7 +21,7 @@ class CreateCategoriesTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */

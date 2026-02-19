@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Routes Web
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| C'est ici que vous pouvez enregistrer les routes web de votre application.
+| Ces routes sont chargées par le RouteServiceProvider dans un groupe qui
+| contient le groupe de middleware "web". Créez quelque chose de génial !
 |
 */
 

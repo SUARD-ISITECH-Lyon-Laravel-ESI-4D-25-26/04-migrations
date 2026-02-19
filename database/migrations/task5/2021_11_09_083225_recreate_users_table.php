@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 class RecreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations.
      *
      * @return void
      */
     public function up()
     {
-        // TASK: add an if-statement in this file to NOT create table if it already exists
+        // TÂCHE : ajoutez une condition dans ce fichier pour ne PAS recréer la table si elle existe déjà
+        // Indice : utilisez Schema::hasTable() (voir https://laravel.com/docs/migrations#checking-for-table-column-existence)
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -26,7 +27,7 @@ class RecreateUsersTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Annuler les migrations.
      *
      * @return void
      */
